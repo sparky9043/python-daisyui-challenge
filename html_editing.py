@@ -38,25 +38,33 @@ def create_website(template_file, html_output):
     # Add Title to Body
     h1_tag = "<h1>Welcome to My Website</h1>"
     modified_html = add_to_body(modified_html, h1_tag)
+    
+    image_1_url = "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+    image_2_url = "https://plus.unsplash.com/premium_photo-1683865776032-07bf70b0add1?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    
+    image_urls = (image_1_url, image_2_url)
 
-    # Add Card to HTML
-    card = """
-    <div class="card bg-base-100 w-96 shadow-sm">
-    <figure>
-        <img
-        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-        alt="Shoes" />
-    </figure>
-    <div class="card-body">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
+    # Add Cards to HTML
+    for image_url in image_urls:
+        card = f"""
+        <div class="card bg-base-100 w-96 shadow-sm">
+        <figure>
+            <img
+                src="{image_url}"
+            />
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title">Card Title</h2>
+            <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+            <div class="card-actions justify-end">
+            <button class="btn btn-primary">Buy Now</button>
+            </div>
         </div>
-    </div>
-    </div>
-    """
-    modified_html = add_to_body(modified_html, card)
+        </div>
+        """
+        modified_html = add_to_body(modified_html, card)
+    
+    # modified_html = add_to_body(modified_html, card)
     
     # Write index.html file after updating with Python
     with open(html_output, "w") as file:

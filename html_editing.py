@@ -11,11 +11,23 @@ def create_website(template_file, html_output):
     html_base = ""
     with open(template_file, "r") as website:
         html_base = website.read()
-        
-    updated_html = html_base
+
+    # Update Title
+    modified_html = html_base.replace("<title>Document", "<title>My Website")
+    
+    # Implement DaisyUI
+    daisy_ui = """
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    """
+    
+    modified_html = modified_html.replace("</head>", f"{daisy_ui}</head>")
+    
+
     
     # Write index.html file after updating with Python
     with open(html_output, "w") as file:
-        file.write(updated_html)
+        file.write(modified_html)
     
 create_website("./template.html", "./index.html")

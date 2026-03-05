@@ -13,7 +13,8 @@ def create_website(template_file, html_output):
         html_base = website.read()
 
     # Update Title
-    modified_html = html_base.replace("<title>Document", "<title>My Website")
+    new_title = "My Website"
+    modified_html = html_base.replace("<title>Document", f"<title>{new_title}")
     
     # Implement DaisyUI
     daisy_ui = """
@@ -24,6 +25,14 @@ def create_website(template_file, html_output):
     
     modified_html = modified_html.replace("</head>", f"{daisy_ui}</head>")
     
+    # Apply Theme
+    data_theme = "halloween"
+    modified_html = modified_html.replace('<html lang="en">',
+                                          f'<html lang="en" data-theme="{data_theme}">')
+    
+    # Add Title to Body
+    h1_tag = "<h1>Welcome to My Website</h1>"
+    modified_html = modified_html.replace("</body>", f"{h1_tag}</body>")
 
     
     # Write index.html file after updating with Python

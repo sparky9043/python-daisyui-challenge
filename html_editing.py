@@ -64,8 +64,6 @@ def create_website(template_file, html_output):
         """
         modified_html = add_to_body(modified_html, card)
     
-    # modified_html = add_to_body(modified_html, card)
-    
     # Write index.html file after updating with Python
     with open(html_output, "w") as file:
         file.write(modified_html)

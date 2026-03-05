@@ -27,6 +27,16 @@ def create_website(template_file, html_output):
     
     # Helper function to add element before body tag and return modified_html
     def add_to_body(modified_html, element_to_add):
+        """Helpr function that accepts html string and element to add
+        to the body and replaces closing body tag with the element
+
+        Args:
+            modified_html (string): current HTML string
+            element_to_add (string): element to add before the closing body tag
+
+        Returns:
+            string: modified HTML string after adding element
+        """
         modified_html = modified_html.replace("</body>", f"{element_to_add}</body>")
         return modified_html
     
